@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  max-width: 128rem;
+  height: 5rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--text-01);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  position : relative;
+  transform : translateY(-100%);
+
+  & > span {
+   flex-basis: 60%;
+  }
+
+  & > div {
+    flex-basis: 40%;
+    display: inherit;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .privacy {
+    text-decoration: underline;
+    font-weight: 500;
+    padding-left: 1rem;
+  }
+
+  .sns_icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+}

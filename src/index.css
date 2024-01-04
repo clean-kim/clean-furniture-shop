@@ -1,0 +1,107 @@
+@import 'reset-css/reset.css';
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+  --ui-transparent: transparent;
+  --ui-background: #fff;
+  --ui-01: #000;
+  --ui-02: #111;
+  --ui-03: #222;
+  --ui-04: #333;
+  --ui-05: #444;
+  --ui-06: #555;
+  --ui-07: #666;
+  --ui-08: #777;
+  --ui-09: #888;
+  --ui-10: #999;
+  --ui-11: #aaa;
+  --ui-12: #bbb;
+  --ui-13: #ccc;
+  --ui-14: #ddd;
+  --ui-15: #eee;
+  --ui-16: #fff;
+
+  --color-light: #ffffff;
+  --color-light01: #e7e7e7;
+  --color-light02: #d1d1d1;
+  --color-light03: #b6b6b6;
+  --color-light04: #9b9b9b;
+
+  --text-01: #000;
+  --text-02: #fff;
+
+  --border-14: #ddd;
+
+  --primary: #f95335;
+
+  --nude-01: #f1ede6;
+  --nude-02: #ebe3db;
+  --nude-03: #d1c7bd;
+  --nude-04: #cbad8d;
+  --nude-05: #a48374;
+  --nude-06: #3a2d28;
+
+  --fontSize-default: 10px;
+  --fs-10: 1rem;
+  --fs-12: 1.2rem;
+  --fs-14: 1.4rem;
+  --fs-16: 1.6rem;
+  --fs-18: 1.8rem;
+  --fs-20: 2rem;
+  --fs-24: 2.4rem;
+  --fs-30: 3rem;
+  --fs-40: 4rem;
+  --fs-50: 5rem;
+  --fs-60: 6rem;
+  --fs-70: 7rem;
+}
+
+html {
+  font-size: var(--fontSize-default);
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-01);
+  margin: 0 auto;
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.tippy-box {
+  color: var(--text-01) !important;
+}
+
+#app {
+  height: auto;
+  min-height: 100%;
+  padding: 5.4rem 0 5rem 0;
+}

@@ -1,0 +1,15 @@
+.btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  height: 4rem;
+}
+
+.btn_primary {
+  background: linear-gradient(0, var(--ui-01), var(--ui-01)) padding-box, linear-gradient(135deg, var(--color-light01) 5%, var(--ui-09) 10%, var(--color-light01) 65.74%, var(--color-light04) 85.5%) border-box;
+  color: var(--text-02);
+  font-size: var(--fs-14);
+  padding: 1rem 2rem;
+  border-radius: 3em;
+  border: 0.125rem solid #0000;
+  min-width: 7.5rem;
+}

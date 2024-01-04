@@ -1,0 +1,11 @@
+export { default as banner_chair_01 } from './banner_chair_01.jpeg';
+export { default as banner_chair_02 } from './banner_chair_02.jpeg';
+export { default as black_chair } from './black_chair.jpeg';
+export { default as blue_chair } from './blue_chair.png';
+export { default as cantilever_chair } from './cantilever_chair.png';
+export { default as leather_sofa } from './leather_sofa.jpeg';
+export { default as navy_chair } from './navy_chair.png';
+export { default as office } from './office.png';
+export { default as pink_chair } from './pink_chair.png';
+export { default as red_chair } from './red_chair.jpeg';
+export { default as sky_chair } from './sky_chair.png';
