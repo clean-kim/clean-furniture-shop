@@ -1,18 +1,12 @@
 import { http, HttpResponse } from 'msw';
+import * as dummy from '@mocks/data/data';
 
 export const handlers = [
-  http.get('/nav', async ({ request }) => {
-
-    console.log('/na: ', request);
-
-    return HttpResponse.json(await request.json());
+  http.get('/nav', async () => {
+    return HttpResponse.json(dummy.data.nav);
   }),
   http.get('/products', async ({ request }) => {
-    console.log('/products: ', request);
-    // if (req.url.searchParams.size > 0) {
-    //   const category = req.url.searchParams.get('category');
-    //   result = result.filter(item => item.category === category);
-    // }
-    // return res(ctx.status(200), ctx.json(result));
+    console.log('category: ', request);
+    return HttpResponse.json(dummy.data.products);
   }),
 ];

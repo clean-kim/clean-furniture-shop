@@ -1,4 +1,4 @@
-export default {
+export const data = {
   nav: {
     data: ['Life', 'Kitchen', 'Tech', 'Interior', 'Apparel', 'Bag', 'Shoes'],
   },

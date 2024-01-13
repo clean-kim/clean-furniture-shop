@@ -12,7 +12,7 @@ export function HeaderMobile({ menuList }: MenuList) {
         <div className='category'>
           <ul>
             {
-              menuList.length > 0 &&
+              menuList &&
               menuList.sort().map(item => {
                 return (<li key={item}><Link to={`/category?category=${item.toLowerCase()}`}>{item}</Link></li>);
               })

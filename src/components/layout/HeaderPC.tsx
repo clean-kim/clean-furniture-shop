@@ -60,10 +60,10 @@ export function HeaderPC({ menuList }: MenuList) {
         <div className='category' ref={categoryRef} onMouseEnter={handleCategoryMouseEnter} onMouseLeave={handleCategoryMouseLeave}>
           <ul>
             {
-              isCategoryHovered && menuList.length > 0 &&
-                menuList.sort().map(item => {
-                  return (<li key={item}><Link to={`/category?category=${item.toLowerCase()}`}>{item}</Link></li>);
-                })
+              isCategoryHovered && menuList &&
+              menuList.sort().map(item => {
+                return (<li key={item}><Link to={`/category?category=${item.toLowerCase()}`}>{item}</Link></li>);
+              })
             }
           </ul>
         </div>

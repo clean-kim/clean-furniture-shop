@@ -5,7 +5,7 @@ export function MenuPC() {
   const [navList, setNavList] = useState<string[]>([]);
 
   async function getNavData() {
-    const response = await fetch(import.meta.env.URL + '/nav');
+    const response = await fetch(import.meta.env.VITE_API_BASE_URL + '/nav');
     const value = await response.json();
     setNavList(value.data);
   }

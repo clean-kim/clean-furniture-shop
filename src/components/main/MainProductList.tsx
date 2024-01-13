@@ -9,7 +9,7 @@ export interface ProductListProps {
 export function MainProductList({ category }: ProductListProps) {
 
   const getProductList = async () => {
-    const response = await fetch(`${import.meta.env.URL}/products?category=${category}`);
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/products?category=${category}`);
     return response.json();
   };
 

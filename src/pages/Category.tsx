@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { MainProductList } from '@components/main';
 
 // async function fetchData(category: string) {
@@ -9,18 +9,17 @@ import { MainProductList } from '@components/main';
 // }
 
 export default function Category() {
-  const [ params ] = useSearchParams();
-  const category = params.get('category') ?? '';
+  const { categoryCode } = useParams();
 
   // const datas = await fetchData(params.category);
 
-  useEffect(() => {}, [category]);
+  useEffect(() => {}, [categoryCode]);
 
   return (
     <section className='shop'>
       <section>
-        <h2 className='section_title'>{category.toUpperCase()}</h2>
-        <MainProductList category={category} />
+        <h2 className='section_title'>{categoryCode?.toUpperCase()}</h2>
+        <MainProductList category={categoryCode} />
       </section>
     </section>
   );
