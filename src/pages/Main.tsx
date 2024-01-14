@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Splitting from 'splitting';
-import { architecture, design_chair, lamps, living_room, main_01, main_bg, table } from '@assets/img/main';
+import { architecture, design_chair, lamps, living_room, main_01, table } from '@assets/img/main';
+import { FurnitureCanvas } from '@components/main';
 import { ProductTagButton } from '@components/main/ProductTagButton';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,8 +13,6 @@ const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const Main = () => {
-
-  console.log('import.meta.env.VITE_URL:', import.meta.env.VITE_API_BASE_URL);
 
   const mainText2Ref = useRef<HTMLDivElement>(null);
   const mainText3Ref = useRef<HTMLDivElement>(null);
@@ -80,7 +79,8 @@ const Main = () => {
   return (
     <main className='main'>
       <section className='section_wrap'>
-        <img src={main_bg} alt='main_01' width={2560} height={0} className='main__bg' style={{ height: '100vh' }}/>
+        {/*<img src={main_bg} alt='main_01' width={2560} height={0} className='main__bg' style={{ height: '100vh' }}/>*/}
+        <FurnitureCanvas/>
         <section className='main__section'>
           <div className='main_text__container'>
             <div className='sub_text__container'>
@@ -97,7 +97,7 @@ const Main = () => {
             <article className='main_card--column centered'>
               <Link to={'/'}>
                 <div className='img_wrap'>
-                  <img src={main_01} alt="" className='main_product_img' />
+                  <img src={main_01} alt='' className='main_product_img'/>
                 </div>
                 <div className='card_info'>
                   <h2 className='card_title'>HOME INTERIOR</h2>
@@ -108,8 +108,8 @@ const Main = () => {
           </div>
         </section>
       </section>
-      <section className="main__section main_grid">
-        <div className="main_grid__item">
+      <section className='main__section main_grid'>
+        <div className='main_grid__item'>
           <div className='main__wrap' ref={mainText2Ref}>
             COMFORT
           </div>
@@ -117,7 +117,7 @@ const Main = () => {
         <div className='main_grid__item grid_item01'>
           <div className='main_card01'>
             <div className='img_wrap'>
-              <img src={architecture} alt="메인 이미지" className='main_product_img' />
+              <img src={architecture} alt='메인 이미지' className='main_product_img'/>
             </div>
             <p className='item_text'>품질과 디자인이 완벽하게 조화를 이룬 가구로, 당신의 생활에 품격을 더해보세요.</p>
           </div>
@@ -126,11 +126,11 @@ const Main = () => {
           <div className='main_card02'>
             <p className='item_text'>당신의 취향을 반영한 가구로, 집을 더욱 사랑스럽게 만드세요.</p>
             <div className='img_wrap'>
-              <img src={design_chair} alt="메인 이미지" className='main_product_img' />
+              <img src={design_chair} alt='메인 이미지' className='main_product_img'/>
             </div>
           </div>
         </div>
-        <div className="main_grid__item" ref={mainText3Ref}>
+        <div className='main_grid__item' ref={mainText3Ref}>
         </div>
       </section>
       <section className='main__section'>
@@ -143,9 +143,9 @@ const Main = () => {
         </div>
         <div className='main_flex row_content'>
           <div className='main_product_link'>
-            <ProductTagButton top={'60%'} left={'60%'} />
+            <ProductTagButton top={'60%'} left={'60%'}/>
             <div className='img_wrap' style={{ '--max-width': '100%', height: '40rem' } as React.CSSProperties}>
-              <img src={living_room} alt="" className='main_product_img'/>
+              <img src={living_room} alt='' className='main_product_img'/>
             </div>
           </div>
           <div className='main_flex flex--column col_content'>

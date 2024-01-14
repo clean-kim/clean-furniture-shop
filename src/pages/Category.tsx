@@ -19,7 +19,7 @@ export default function Category() {
     <section className='shop'>
       <section>
         <h2 className='section_title'>{categoryCode?.toUpperCase()}</h2>
-        <MainProductList category={categoryCode} />
+        <MainProductList category={categoryCode ?? ''} />
       </section>
     </section>
   );

@@ -1,3 +1,1 @@
-type Response<T> = {
-  list: T[];
-};
+export type Response<T> = T[];

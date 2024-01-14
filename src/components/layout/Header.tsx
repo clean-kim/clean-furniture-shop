@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
-import axios from 'axios';
 import { HeaderMobile } from '@components/layout/HeaderMobile';
 import { HeaderPC } from '@components/layout/HeaderPC';
 import { Response } from '@typings/Response';
@@ -13,10 +12,8 @@ export interface MenuList {
 export function Header() {
   const isMobile = useIsMobile();
 
-  // const [menuList, setMenuList] = useState<string[]>([]);
-
   const getNavData = async (): Promise<Response<string>> => {
-    const response = await fetch('http://localhost:8080/nav');
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/nav`);
     const responseList = await response.json();
     return responseList.data;
   };
@@ -31,9 +28,7 @@ export function Header() {
   return (
     <>
       {
-        !isMobile && isSuccess ?
-          <HeaderPC menuList={menuList} /> :
-          <HeaderMobile menuList={menuList} />
+        isSuccess && (isMobile ? <HeaderMobile menuList={menuList} /> : <HeaderPC menuList={menuList} />)
       }
     </>
   );
