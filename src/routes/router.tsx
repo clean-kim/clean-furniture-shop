@@ -6,6 +6,7 @@ import type { RouteObject } from 'react-router-dom';
 const Main = loadable(() => import('@pages/Main'));
 const Category = loadable(() => import('@pages/Category'));
 const ProductDetail = loadable(() => import('@pages/ProductDetail'));
+const CartPage = loadable(() => import('@pages/CartPage'));
 
 export const ROUTE_OBJECT = [
   {
@@ -21,6 +22,10 @@ export const ROUTE_OBJECT = [
       {
         element: <ProductDetail />,
         path: 'detail',
+      },
+      {
+        element: <CartPage />,
+        path: 'cart',
       },
     ],
     element: <App />,

@@ -102,12 +102,7 @@ button {
 
 #app {
   height: auto;
-  min-height: 100%;
+  min-height: 100vh;
   padding: 5.4rem 0 5rem 0;
   z-index: 1;
 }
-
-/*canvas {*/
-/*  position: fixed;*/
-/*  inset: 0;*/
-/*}*/

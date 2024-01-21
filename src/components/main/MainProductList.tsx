@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ProductItem } from '@components/common/ProductItem';
+import { Product } from '@typings/Model';
 import { getComma } from '@utils';
 
 export interface ProductListProps {

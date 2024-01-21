@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Splitting from 'splitting';
-import { architecture, design_chair, lamps, living_room, main_01, table } from '@assets/img/main';
+import { architecture, design_chair, lamps, living_room, table } from '@assets/img/main';
 import { FurnitureCanvas } from '@components/main';
 import { ProductTagButton } from '@components/main/ProductTagButton';
 
@@ -72,15 +72,17 @@ const Main = () => {
           yPercent: -100,
         });
     });
-    if(mainText2Ref.current) {Splitting({ target: mainText2Ref.current });}
+    if(mainText2Ref.current) {
+      console.log(mainText2Ref.current);
+      Splitting({ target: mainText2Ref.current });
+    }
     return () => ctx.revert();
   }, []);
 
   return (
     <main className='main'>
-      <section className='section_wrap'>
+      <section className='section_wrap canvas_wrap'>
         {/*<img src={main_bg} alt='main_01' width={2560} height={0} className='main__bg' style={{ height: '100vh' }}/>*/}
-        <FurnitureCanvas/>
         <section className='main__section'>
           <div className='main_text__container'>
             <div className='sub_text__container'>
@@ -93,19 +95,20 @@ const Main = () => {
               </div>
             </div>
           </div>
-          <div className='main_card__wrap'>
-            <article className='main_card--column centered'>
-              <Link to={'/'}>
-                <div className='img_wrap'>
-                  <img src={main_01} alt='' className='main_product_img'/>
-                </div>
-                <div className='card_info'>
-                  <h2 className='card_title'>HOME INTERIOR</h2>
-                  <p className='card_sub_title'>Go Shop</p>
-                </div>
-              </Link>
-            </article>
-          </div>
+          {/*<div className='main_card__wrap'>*/}
+          {/*  <article className='main_card--column centered'>*/}
+          {/*    <Link to={'/'}>*/}
+          {/*      <div className='img_wrap'>*/}
+          {/*        <img src={main_01} alt='' className='main_product_img'/>*/}
+          {/*      </div>*/}
+          {/*      <div className='card_info'>*/}
+          {/*        <h2 className='card_title'>HOME INTERIOR</h2>*/}
+          {/*        <p className='card_sub_title'>Go Shop</p>*/}
+          {/*      </div>*/}
+          {/*    </Link>*/}
+          {/*  </article>*/}
+          {/*</div>*/}
+          <FurnitureCanvas/>
         </section>
       </section>
       <section className='main__section main_grid'>

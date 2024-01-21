@@ -1,0 +1,26 @@
+.calculator {
+  width: 70px;
+  position: relative;
+  font-size: 12px;
+  border: none;
+  box-sizing: border-box;
+  background: var(--ui-background);
+  display: flex;
+
+  .calculator__input {
+    width: 40px;
+    height: 22px;
+    text-align: center;
+    border: 1px solid var(--border100);
+    border-radius: 5px;
+    background: var(--ui-01);
+  }
+
+  .calculator__button {
+    width: 30%;
+    background: var(--ui-transparent);
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+  }
+}

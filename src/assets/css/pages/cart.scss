@@ -1,0 +1,55 @@
+.cart {
+  width: 100%;
+  height: calc(var(--vh, 100vh) * 100);
+  margin-top: 80px;
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    box-sizing: border-box;
+
+    th, td {
+      word-break: break-all;
+      background-clip: padding-box;
+    }
+
+    thead {
+      height: 80px;
+      font-weight: 500;
+      font-size: 1.125rem;
+      line-height: 80px;
+      box-sizing: border-box;
+      border-bottom: 1px solid var(--border400);
+
+      th:first-child {
+        position: relative;
+        text-align: start;
+        padding-left: 1rem;
+        vertical-align: middle;
+      }
+
+    }
+
+    tbody {
+      tr {
+        border-collapse: collapse;
+        border-bottom: 1px solid var(--border200);
+      }
+
+      td:first-child {
+        position: relative;
+        text-align: start;
+        padding-left: 1rem;
+        vertical-align: middle;
+      }
+
+      td {
+        padding: 20px;
+        vertical-align: middle;
+        text-align: center;
+      }
+    }
+  }
+}

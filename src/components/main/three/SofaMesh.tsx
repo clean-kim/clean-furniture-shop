@@ -1,14 +1,38 @@
-import { Plane, TorusKnot } from '@react-three/drei';
+import { useLayoutEffect, useRef, useState } from 'react';
+import { useFrame, useLoader } from '@react-three/fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import * as THREE from 'three';
+import { Plane } from '@react-three/drei';
+// import { Sofa } from '/public/models/Sofa';
 
 export function SofaMesh() {
-  return (
-    <>
-      <Plane args={[40, 40]} rotation-x={-Math.PI / 2} receiveShadow>
-        <meshStandardMaterial/>
-      </Plane>
-      <TorusKnot args={[1, 0.2, 128, 128, 2, 3]} position={[-3, 1.6, 0]} castShadow receiveShadow>
-        <meshStandardMaterial color={0xffffff} />
-      </TorusKnot>
-    </>
-  );
+
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useLayoutEffect(() => {
+    const updateMousePosition = (event: MouseEvent) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener('mousemove', updateMousePosition);
+
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
+
+  const mesh = useRef<THREE.Mesh | null>(null);
+
+  useFrame(() => {
+    if (mesh.current) {
+      mesh.current.rotation.x = mousePosition.y / window.innerHeight * Math.PI * 0.5;
+      mesh.current.rotation.y = mousePosition.x / window.innerWidth * Math.PI * 0.5;
+    }
+  });
+
+  const gltf = useLoader(GLTFLoader, '/public/models/sofa.glb');
+
+  return <>
+    <primitive object={gltf.scene} />
+  </>;
 }

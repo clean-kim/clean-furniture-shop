@@ -1,4 +1,4 @@
-type Product = {
+export type Product = {
   no: number;
   title: string;
   price: number;
@@ -10,7 +10,7 @@ type Product = {
   isFavorite: boolean;
 }
 
-type CartItem = {
+export type Cart = {
   product: Product;
   option: string;
   count: number;

@@ -1,6 +1,7 @@
 import { createContext, Dispatch, ReactElement, ReactNode, useReducer } from 'react';
+import { Cart } from '@typings/Model';
 
-type CartContextState = CartItem[];
+type CartContextState = Cart[];
 
 type CartDispatchContextState = Dispatch<CartAction>;
 
@@ -12,7 +13,7 @@ const ActionType = {
 
 export type CartAddAction = {
   type: typeof ActionType.add;
-  payload: { cartItem: CartItem };
+  payload: { cartItem: Cart };
 }
 
 export type CartRemoveAction = {
@@ -22,7 +23,7 @@ export type CartRemoveAction = {
 
 export type CartAction = CartAddAction | CartRemoveAction;
 
-export const addCart = (props: { cartItem: CartItem }): CartAddAction => ({
+export const addCart = (props: { cartItem: Cart }): CartAddAction => ({
   payload: props,
   type: ActionType.add,
 });
@@ -36,24 +37,24 @@ export const CartContext = createContext<CartContextState>([]);
 
 export const CartDispatchContext = createContext<CartDispatchContextState>(() => null);
 
-export const reducer = (state: CartItem[], action: CartAction) => {
+export const reducer = (state: Cart[], action: CartAction) => {
   const type = action.type;
 
   switch (type) {
   case ActionType.add: {
     const { cartItem } = action.payload;
     const { option } = cartItem;
-    const newArr: CartItem[] = [];
+    const newArr: Cart[] = [];
     if (state.length > 0) {
       // 중복 아닌 리스트
-      const normalList = state.filter((item: CartItem) => !(cartItem) || item.product.no !== cartItem.product.no);
-      normalList.forEach((item: CartItem) => {
+      const normalList = state.filter((item: Cart) => !(cartItem) || item.product.no !== cartItem.product.no);
+      normalList.forEach((item: Cart) => {
         newArr.push(item);
       });
       // 중복 리스트
-      const duplicateItem = state.filter((item: CartItem) => !(cartItem) || item.product.no === cartItem.product.no && option !== undefined && item.option?.includes(option));
+      const duplicateItem = state.filter((item: Cart) => !(cartItem) || item.product.no === cartItem.product.no && option !== undefined && item.option?.includes(option));
       if (duplicateItem.length > 0) {
-        duplicateItem.forEach((item: CartItem) => {
+        duplicateItem.forEach((item: Cart) => {
           if (item.count) {   // 중복이면 카운트만 증가
             const count = item.count + 1;
             newArr.push({ ...item, count });
@@ -69,7 +70,7 @@ export const reducer = (state: CartItem[], action: CartAction) => {
   }
   case ActionType.remove: {
     const cartItemNo = action.payload;
-    return state.filter((item: CartItem) => item.product.no !== cartItemNo);
+    return state.filter((item: Cart) => item.product.no !== cartItemNo);
   }
   default : {
     return [];
@@ -82,7 +83,7 @@ export type CartProviderProps = {
 }
 
 export const CartProvider = ({ children }: CartProviderProps): ReactElement => {
-  const [state, dispatch] = useReducer(reducer, [] as CartItem[]);
+  const [state, dispatch] = useReducer(reducer, [] as Cart[]);
 
   return (
     <CartContext.Provider value={state}>

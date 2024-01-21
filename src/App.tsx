@@ -2,6 +2,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Outlet } from 'react-router-dom';
 import { Footer, Header } from '@components/layout';
+import { CartProvider } from './contexts/CartContext';
 
 function App() {
   const queryClient = new QueryClient({ defaultOptions: { queries: { refetchOnWindowFocus: false } } });
@@ -9,13 +10,15 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <HelmetProvider>
-          <Header/>
-          <div id='app'>
-            <Outlet />
-          </div>
-          <Footer/>
-        </HelmetProvider>
+        <CartProvider>
+          <HelmetProvider>
+            <Header/>
+            <div id='app'>
+              <Outlet />
+            </div>
+            <Footer/>
+          </HelmetProvider>
+        </CartProvider>
       </QueryClientProvider>
     </>
   );

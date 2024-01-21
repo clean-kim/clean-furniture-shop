@@ -19,6 +19,13 @@
       z-index: -1;
     }
   }
+
+  .canvas_wrap {
+    background: var(--ui-background);
+    background: linear-gradient(180deg, #e0e0e0 20%, #fff 90%);
+    //z-index: 1;
+  }
+
   .main__section {
     width: 100%;
     max-width: 128rem;
