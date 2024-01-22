@@ -6,7 +6,8 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:@react-three/recommended",
   ],
   overrides: [
     {
@@ -32,6 +33,7 @@ module.exports = {
     "react",
     "import",
     "sort-keys",
+    "@react-three",
   ],
   rules: {
     "comma-dangle": ["error", "always-multiline"],
@@ -70,7 +72,8 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "linebreak-style": [2, "unix"],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/no-unknown-property": "off"
   },
   settings: {
     'import/resolver': {

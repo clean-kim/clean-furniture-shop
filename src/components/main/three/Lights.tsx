@@ -1,16 +1,16 @@
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
-import { RandomizedLight, SpotLight, useHelper } from '@react-three/drei';
+import { useHelper } from '@react-three/drei';
 import * as THREE from 'three';
-import { Object3D, Object3DEventMap } from 'three';
+import { DirectionalLight, Object3D, Object3DEventMap } from 'three';
 
 export const Lights = () => {
-  const lightRef = useRef<Object3D<Object3DEventMap> | null>(null);
+  const lightRef = useRef<DirectionalLight | null>(null);
   // const targetRef = useRef(null);
   const [, setState] = useState<null | Object3D<Object3DEventMap>>(null);
-  // useHelper(lightRef, THREE.DirectionalLightHelper, 3, 0xffff00);
+  useHelper(lightRef as MutableRefObject<DirectionalLight>, THREE.DirectionalLightHelper, 3, 0xffff00);
   // useHelper(lightRef, THREE.PointLightHelper, 1, 0xffff00);
   // useHelper(lightRef, THREE.HemisphereLightHelper, 1, 0xffffff);
-  useHelper(lightRef as unknown as MutableRefObject<Object3D<Object3DEventMap>>, THREE.SpotLightHelper, 0xffffff);
+  // useHelper(lightRef as MutableRefObject<DirectionalLight>, THREE.SpotLightHelper, 0xffffff);
 
   useEffect(() => {
     setState(lightRef.current);
@@ -18,12 +18,11 @@ export const Lights = () => {
 
   return (
     <>
-      {/* position: default 0 */}
       <directionalLight
         ref={lightRef}
-        castShadow="true"
+        castShadow={true}
         args={[0xffffff, 4]}
-        position={[0,5,20]}
+        position={[0, 5, 20]}
         shadow-camera-left={-5}
         shadow-camera-right={5}
         shadow-camera-top={5}

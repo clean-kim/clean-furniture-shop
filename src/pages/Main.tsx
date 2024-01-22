@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -9,18 +9,12 @@ import { ProductTagButton } from '@components/main/ProductTagButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
-
 const Main = () => {
-
   const mainText2Ref = useRef<HTMLDivElement>(null);
   const mainText3Ref = useRef<HTMLDivElement>(null);
 
-  useIsomorphicLayoutEffect(() => {
-    const char = document.querySelectorAll('.main_grid__item .char');
+  useEffect(() => {
     const ctx = gsap.context(() => {
-
       const tl = gsap.timeline();
       tl.from('.sub_text__container', {
         delay: 2,
@@ -31,13 +25,12 @@ const Main = () => {
           duration: 1,
           ease: 'power3.inOut',
           yPercent: -100,
-        }, 'start')
-        .from('.main_card--column', {
-          duration: 1,
-          ease: 'power3.inOut',
-          yPercent: 200,
         }, 'start');
-
+      // .from('.main_card--column', {
+      //   duration: 1,
+      //   ease: 'power3.inOut',
+      //   yPercent: 200,
+      // }, 'start');
       gsap.from('.main_card01', {
         duration: 1,
         ease: 'power2.inOut',
@@ -59,23 +52,22 @@ const Main = () => {
         yPercent: 300,
       });
 
-      gsap.from(char,
-        {
+      if(mainText2Ref.current) {
+        Splitting({ target: mainText2Ref.current });
+        const char = mainText2Ref.current.querySelectorAll('.char');
+        gsap.from(char, {
           duration: 1,
           ease:'power2.inOut',
           scrollTrigger: {
             end: 'top top',
             start: 'top bottom',
-            trigger: mainText2Ref.current,
+            trigger: '.grid_text',
           },
-          stagger:.03,
+          stagger: .03,
           yPercent: -100,
         });
+      }
     });
-    if(mainText2Ref.current) {
-      console.log(mainText2Ref.current);
-      Splitting({ target: mainText2Ref.current });
-    }
     return () => ctx.revert();
   }, []);
 
@@ -112,7 +104,7 @@ const Main = () => {
         </section>
       </section>
       <section className='main__section main_grid'>
-        <div className='main_grid__item'>
+        <div className='main_grid__item grid_text'>
           <div className='main__wrap' ref={mainText2Ref}>
             COMFORT
           </div>

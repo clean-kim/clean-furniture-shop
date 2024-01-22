@@ -1,8 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
-import { Plane } from '@react-three/drei';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // import { Sofa } from '/public/models/Sofa';
 
 export function SofaMesh() {
@@ -33,6 +32,7 @@ export function SofaMesh() {
   const gltf = useLoader(GLTFLoader, '/public/models/sofa.glb');
 
   return <>
+    {/* eslint-disable-next-line react/no-unknown-property */}
     <primitive object={gltf.scene} />
   </>;
 }

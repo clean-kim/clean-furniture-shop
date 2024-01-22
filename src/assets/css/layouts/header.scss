@@ -8,8 +8,7 @@
   box-shadow: 0 0.1rem 1.5rem 0.1rem rgba(0,0,0,.1);
 
   nav {
-    max-width: 128rem;
-    margin: 0 auto;
+    display: inline-block;
 
     .menu {
       display: inline-flex;
@@ -102,6 +101,15 @@
   align-items: center;
   width: 5rem;
   height: 5rem;
+}
+
+.gnb {
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+.search_wrap {
+  display: inline-block;
 }
 
 @keyframes show-logo {

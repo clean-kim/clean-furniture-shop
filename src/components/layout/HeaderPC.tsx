@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Splitting from 'splitting';
+import { SearchInput } from '@components/common';
 import { MenuList } from '@components/layout/Header';
 
 export function HeaderPC({ menuList }: MenuList) {
@@ -52,11 +53,16 @@ export function HeaderPC({ menuList }: MenuList) {
 
   return (
     <header className={`header${location.pathname.split('/')[1] !== '' ? ' header_color' : ''}`} ref={navRef}>
-      <nav>
-        <ul className='menu' id='menu'>
-          <li onMouseEnter={handleMenuMouseEnter} onMouseLeave={handleMenuMouseLeave}><Link to={'/shop'}>Shop</Link></li>
-          <li><Link to={'/'}>Home</Link></li>
-        </ul>
+      <div className='gnb'>
+        <nav>
+          <ul className='menu' id='menu'>
+            <li onMouseEnter={handleMenuMouseEnter} onMouseLeave={handleMenuMouseLeave}><Link to={'/shop'}>Shop</Link></li>
+            <li><Link to={'/'}>Home</Link></li>
+          </ul>
+        </nav>
+        <div className='search_wrap'>
+          <SearchInput />
+        </div>
         <div className='category' ref={categoryRef} onMouseEnter={handleCategoryMouseEnter} onMouseLeave={handleCategoryMouseLeave}>
           <ul>
             {
@@ -67,7 +73,7 @@ export function HeaderPC({ menuList }: MenuList) {
             }
           </ul>
         </div>
-      </nav>
+      </div>
     </header>
   );
 }

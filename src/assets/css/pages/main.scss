@@ -119,6 +119,10 @@
     grid-row: 2;
     font-size: 16rem;
     font-weight: 600;
+
+    .char {
+      display: inline-block;
+    }
   }
 
   .main_grid__item:nth-of-type(2) {
