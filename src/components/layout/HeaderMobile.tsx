@@ -1,25 +1,56 @@
-import { Link } from 'react-router-dom';
+import { ForwardedRef, forwardRef, useReducer } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { MenuList } from '@components/layout/Header';
 
-export function HeaderMobile({ menuList }: MenuList) {
+export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRef<HTMLElement>) => {
+  const location = useLocation();
+  const [open, toggleOpen] = useReducer((v) => !v, true);
+
+  const handleToggle = () => {
+    toggleOpen();
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  };
+
   return (
-    <header className='header'>
-      <nav>
-        <ul className='menu' id='menu'>
-          <li><Link to={'/shop'}>Shop</Link></li>
-          <li><Link to={'/'}>Home</Link></li>
-        </ul>
-        <div className='category'>
-          <ul>
-            {
-              menuList &&
-              menuList.sort().map(item => {
-                return (<li key={item}><Link to={`/category?category=${item.toLowerCase()}`}>{item}</Link></li>);
-              })
-            }
-          </ul>
+    <>
+      <div className={`side_menu${!open ? ' open' : ''}`}>
+        <button className='close_btn' onClick={handleToggle} />
+        <div className="home_btn">
+          <span className="button" />
+          <Link to={'/'} onClick={handleToggle}><span className='icon_home'/></Link>
         </div>
-      </nav>
-    </header>
+        <h1 className='m_title mt30'>SHOP</h1>
+        <h3 className='m_sub_title mt40'>CATEGORY</h3>
+        <ul className='category mt30'>
+          {
+            menuList &&
+            menuList.sort().map(item => {
+              return (<li key={item}><Link to={`/category/${item.toLowerCase()}`} onClick={handleToggle}>{item}</Link></li>);
+            })
+          }
+        </ul>
+      </div>
+      <header className={`header${location.pathname.split('/')[1] !== '' ? ' header--blur' : ''}`} ref={ref}>
+        <nav>
+          {/*<div className='menu_btn_wrap'>*/}
+          <button className='menu_btn' onClick={handleToggle}>
+            <span />
+            <span />
+            <span />
+          </button>
+          {/*</div>*/}
+          <div className='flex--center'>
+            <button className='icon_search' aria-label='검색' />
+            <Link to={'/cart'} aria-label={'장바구니 가기'} className='cart_btn' />
+          </div>
+        </nav>
+      </header>
+    </>
   );
-}
+});
+
+HeaderMobile.displayName = 'HeaderMobile';

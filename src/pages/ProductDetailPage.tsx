@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Cart } from '@typings/Model';
 import { addCart, CartDispatchContext } from '../contexts/CartContext';
 
-export default function ProductDetail() {
+export default function ProductDetailPage() {
 
   const cartDispatch = useContext(CartDispatchContext);
 

@@ -1,0 +1,185 @@
+.cart_btn {
+  width: 3.6rem;
+  height: 3.6rem;
+  display: inline-block;
+  background-image: url(/src/assets/img/icons/icon_bell.svg);
+  background-repeat: no-repeat;
+  background-size: auto 40%;
+  background-position: center;
+  background-color: var(--ui-transparent);
+  border: var(--ui-transparent);
+}
+
+.menu_btn {
+  position: relative;
+  width: 2rem;
+  height: 1.3rem;
+  background: transparent;
+  border: var(--ui-transparent);
+  cursor: pointer;
+
+  span {
+    display: block;
+    position: absolute;
+    height: .15rem;
+    width: 100%;
+    background: var(--ui-background);
+    border-radius: .9rem;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+
+    &:nth-of-type(1) {
+      top: 0px;
+      transform-origin: left center;
+    }
+    &:nth-of-type(2) {
+      top: 50%;
+      transform: translateY(-50%);
+      transform-origin: left center;
+    }
+    &:nth-of-type(3) {
+      top: 100%;
+      transform-origin: left center;
+      transform: translateY(-100%);
+    }
+  }
+}
+
+.close_btn {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  right: 1rem;
+  background: transparent;
+  border: var(--ui-transparent);
+  cursor: pointer;
+  display: inline-block;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    height: 2rem;
+    width: .15rem;
+    background-color: #000;
+  }
+
+  &::before {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  &::after {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+}
+
+.home_btn {
+  display: flex;
+  position: relative;
+  height: 5rem;
+  width: 5rem;
+  color: rgba(255,0,0,0.8);
+
+  & .button {
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 15px 25px -4px rgba(0, 0, 0, 0.5), inset 0 -3px 4px -1px rgba(0, 0, 0, 0.2), 0 -10px 15px -1px rgba(255, 255, 255, 0.6), inset 0 3px 4px -1px rgba(255, 255, 255, 0.2), inset 0 0 5px 1px rgba(255, 255, 255, 0.8), inset 0 20px 30px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 68.8px;
+    position: absolute;
+    background: #eaeaea;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  & a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 300ms ease-out;
+    font-weight: 700;
+    font-size: var(--fs-14);
+    opacity: 0.9;
+    height: 100%;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+}
+
+.home_btn:hover {
+  .button {
+    filter: blur(0.5px);
+    box-shadow: 0 12px 25px -4px rgba(0, 0, 0, 0.4), inset 0 -8px 30px 1px rgba(255, 255, 255, 0.9), 0 -10px 15px -1px rgba(255, 255, 255, 0.6), inset 0 8px 25px 0 rgba(0, 0, 0, 0.4), inset 0 0 10px 1px rgba(255, 255, 255, 0.6);
+  }
+}
+
+.icon_search {
+  width: 4rem;
+  height: 3rem;
+  border: 0;
+  background-image: url('/src/assets/img/icons/icon_search_m.svg');
+  background-repeat: no-repeat;
+  background-size: auto 60%;
+  background-position: center;
+  background-color: var(--ui-transparent);
+}
+
+.icon_home {
+  width: 50%;
+  height: 50%;
+  border: 0;
+  background-image: url('/src/assets/img/icons/icon_home.svg');
+  background-repeat: no-repeat;
+  background-size: auto 65%;
+  background-position: center;
+  background-color: var(--ui-transparent);
+}
+
+.shop_btn {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  background-color: var(--ui-01);
+  color: #fff;
+  border-radius: 10rem;
+  font-size: var(--fs-12);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  padding: 1.2rem 2.4rem 1.2rem 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color .3s;
+
+  .btn__icon-wrap {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    color:  var(--ui-01);
+    background-color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .btn__icon-svg--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+  }
+
+  &:hover .btn__icon-svg:first-child {
+    transition: transform .3s ease-in-out;
+    transform: translate(150%, -150%);
+  }
+
+  &:hover .btn__icon-svg--copy {
+    transition: transform .3s ease-in-out .1s;
+    transform: translate(0);
+  }
+}
+

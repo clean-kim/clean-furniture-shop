@@ -6,7 +6,12 @@ export const handlers = [
     return HttpResponse.json(dummy.data.nav);
   }),
   http.get('/products', async ({ request }) => {
-    console.log('category: ', request);
-    return HttpResponse.json(dummy.data.products);
+    const url = new URL(request.url);
+    const category = url.searchParams.get('category');
+    let result = dummy.data.products;
+    if (category) {
+      result = dummy.data.products.filter(p => p.category === category);
+    }
+    return HttpResponse.json(result);
   }),
 ];

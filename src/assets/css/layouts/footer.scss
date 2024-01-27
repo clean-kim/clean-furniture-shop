@@ -7,8 +7,9 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  position : relative;
-  transform : translateY(-100%);
+  position : absolute;
+  left: 50%;
+  transform : translate(-50%, -100%);
 
   & > span {
    flex-basis: 60%;
@@ -31,5 +32,4 @@
     width: 2rem;
     height: 2rem;
   }
-
 }

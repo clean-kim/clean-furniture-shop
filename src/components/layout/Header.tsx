@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
+import { useLocation } from 'react-router-dom';
 import { HeaderMobile } from '@components/layout/HeaderMobile';
 import { HeaderPC } from '@components/layout/HeaderPC';
 import { Response } from '@typings/Response';
+import { handleScroll } from '@utils';
 import { useIsMobile } from '../../utils/useIsMobile';
 
 export interface MenuList {
@@ -23,12 +25,25 @@ export function Header() {
     queryKey: ['nav'],
   });
 
-  useEffect(() => {}, [menuList, isMobile]);
+  const headerRef = useRef<HTMLElement>(null);
+  const location = useLocation();
+  useEffect(() => {
+    if (headerRef.current) {
+      if (location.pathname.split('/')[1] !== '') {
+        headerRef.current.removeAttribute('style');
+      } else {
+        window.addEventListener('scroll', () => handleScroll(headerRef.current as HTMLElement));
+        return () => {
+          window.removeEventListener('scroll', () => handleScroll(headerRef.current as HTMLElement));
+        };
+      }
+    }
+  }, [location.pathname, menuList, isMobile]);
 
   return (
     <>
       {
-        isSuccess && (isMobile ? <HeaderMobile menuList={menuList} /> : <HeaderPC menuList={menuList} />)
+        isSuccess && (isMobile ? <HeaderMobile menuList={menuList} ref={headerRef} /> : <HeaderPC menuList={menuList} ref={headerRef} />)
       }
     </>
   );

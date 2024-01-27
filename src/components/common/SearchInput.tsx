@@ -29,10 +29,8 @@ export function SearchInput() {
         className={styles.search__input}
         onChange={handleInputChange}
         value={query}
-        placeholder='브랜드, 상품 검색'/>
-      <button type='button' className={`${styles.btn_icon} ${styles.icon_search}`} onClick={handleClick} />
-      {/*  <Image src={icon_search.src} fill={true} alt='검색 버튼 아이콘'/>*/}
-      {/*</button>*/}
+        placeholder='상품 검색'/>
+      <button type='button' className={`${styles.btn_icon} ${styles.icon_search}`} onClick={handleClick} aria-label='검색' />
     </div>
   );
 }

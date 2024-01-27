@@ -1,39 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { ForwardedRef, forwardRef, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Splitting from 'splitting';
 import { SearchInput } from '@components/common';
 import { MenuList } from '@components/layout/Header';
 
-export function HeaderPC({ menuList }: MenuList) {
+export const HeaderPC = forwardRef(({ menuList }: MenuList, ref: ForwardedRef<HTMLElement>) => {
   const location = useLocation();
-  const navRef = useRef<HTMLElement>(null);
-
-  const handleScroll = () => {
-    const windowHeight = window.innerHeight;
-    const scrollPosition = window.scrollY + 44;
-    if (navRef.current) {
-      if (scrollPosition >= windowHeight) {
-        navRef.current.style.backgroundColor = 'var(--ui-background)';
-        navRef.current.style.color = 'var(--text-01)';
-      } else {
-        navRef.current.style.backgroundColor = 'var(--ui-transparent)';
-        navRef.current.style.color = 'var(--text-02)';
-      }
-    }
-  };
+  const [pathname, setPathname] = useState('');
 
   useEffect(() => {
     const target = document.getElementById('menu') as Element;
     Splitting({ target: target });
-
-    if (navRef.current && location.pathname.split('/')[1] !== '') {
-      navRef.current.removeAttribute('style');
-    } else {
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
+    setPathname(location.pathname.split('/')[1]);
   }, [menuList, location.pathname]);
 
   const categoryRef = useRef<HTMLDivElement>(null);
@@ -52,28 +30,33 @@ export function HeaderPC({ menuList }: MenuList) {
   };
 
   return (
-    <header className={`header${location.pathname.split('/')[1] !== '' ? ' header_color' : ''}`} ref={navRef}>
+    <header className={`header${pathname !== '' ? ' header--blur' : ''}`} ref={ref}>
       <div className='gnb'>
         <nav>
           <ul className='menu' id='menu'>
-            <li onMouseEnter={handleMenuMouseEnter} onMouseLeave={handleMenuMouseLeave}><Link to={'/shop'}>Shop</Link></li>
+            <li onMouseEnter={handleMenuMouseEnter} onMouseLeave={handleMenuMouseLeave}><Link to={'#'}>Shop</Link></li>
             <li><Link to={'/'}>Home</Link></li>
           </ul>
         </nav>
-        <div className='search_wrap'>
-          <SearchInput />
+        <div className='actions'>
+          <div className='search_wrap'>
+            <SearchInput />
+          </div>
+          <Link to={'/cart'} aria-label={'장바구니 가기'} className='cart_btn' />
         </div>
-        <div className='category' ref={categoryRef} onMouseEnter={handleCategoryMouseEnter} onMouseLeave={handleCategoryMouseLeave}>
-          <ul>
-            {
-              isCategoryHovered && menuList &&
-              menuList.sort().map(item => {
-                return (<li key={item}><Link to={`/category?category=${item.toLowerCase()}`}>{item}</Link></li>);
-              })
-            }
-          </ul>
-        </div>
+      </div>
+      <div className='category' ref={categoryRef} onMouseEnter={handleCategoryMouseEnter} onMouseLeave={handleCategoryMouseLeave}>
+        <ul>
+          {
+            isCategoryHovered && menuList &&
+            menuList.sort().map(item => {
+              return (<li key={item}><Link to={`/category/${item.toLowerCase()}`}>{item}</Link></li>);
+            })
+          }
+        </ul>
       </div>
     </header>
   );
-}
+});
+
+HeaderPC.displayName = 'HeaderPC';

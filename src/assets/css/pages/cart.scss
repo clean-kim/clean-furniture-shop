@@ -1,7 +1,7 @@
 .cart {
-  width: 100%;
-  height: calc(var(--vh, 100vh) * 100);
-  margin-top: 80px;
+  height: 100%;
+  max-width: 128rem;
+  margin: 8rem auto 0;
 
   &__table {
     width: 100%;
@@ -52,4 +52,17 @@
       }
     }
   }
+}
+
+.empty_cart {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--fs-16);
+  font-weight: 500;
+  color: var(--text-01);
 }

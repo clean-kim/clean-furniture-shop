@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
 
-@media all and (min-width: 768px) and (max-width: 1280px) {
-
-}
-
-@media all and (max-width: 767px) {
-
-}
-
 ::-webkit-scrollbar {
   width: 5px;
   height: 8px;
@@ -71,4 +63,28 @@
 .relative {
   display: inline-block;
   position: relative;
+}
+
+.mt60 {
+  margin-top: 6rem;
+}
+.mt40 {
+  margin-top: 4rem;
+}
+.mt30 {
+  margin-top: 3rem;
+}
+.mt20 {
+  margin-top: 2rem;
+}
+.ml10 {
+  margin-left: 1rem;
+}
+.mb40 {
+  margin-bottom: 4rem;
+}
+.flex--center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
