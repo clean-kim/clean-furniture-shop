@@ -1,26 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { ProductItem } from '@components/common/ProductItem';
 import { Product } from '@typings/Model';
 import { getComma } from '@utils';
 
 export interface ProductListProps {
-  category: string;
+  list: Product[];
 }
 
-export function MainProductList({ category }: ProductListProps) {
+export function ProductList({ list }: ProductListProps) {
 
-  const getProductList = async () => {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/products?category=${category}`);
-    return response.json();
-  };
-
+  const { categoryCode } = useParams();
   const [productList, setProductList] = useState<Product[]>([]);
 
   useEffect(() => {
-    getProductList().then(res => {
-      setProductList(res);
-    });
-  }, [category]);
+    setProductList(list);
+  }, [categoryCode]);
 
   return (
     <ul className="product_list">

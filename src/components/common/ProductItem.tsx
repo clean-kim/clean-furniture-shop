@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function ProductItem(props: Props) {
-  const { brandName, priceText, title } = props;
+  const { no, brandName, priceText, title } = props;
 
   // const favorite = () => {
   //   Storage()?.setArray('favorite', no);
@@ -33,17 +33,17 @@ export function ProductItem(props: Props) {
         {/*<div className={styles.product_badge}>*/}
         {/*  <Badge/>*/}
         {/*</div>*/}
-        <Link to='/detail' className={styles.bg_link}>
+        <Link to={`/detail/${no}`} className={styles.bg_link}>
           <div className={styles.img_wrap}>
             {/*<button className={styles.btn_favorite} onClick={favorite}>*/}
             {/*  <Image src={getFavorite() ? icon_heart_fill : icon_heart} alt=''/>*/}
             {/*</button>*/}
-            <img src={black_chair} alt='' className={styles.product_img} />
+            <img src={black_chair} alt={title} className={styles.product_img} />
           </div>
         </Link>
         <div className={styles.info_wrap}>
           {/*<a href={`/brand`} className={styles.hidden_link}>{brandName}</a>*/}
-          <Link to='/detail/'>
+          <Link to={`/detail/${no}`}>
             <div className={styles.brand_name}>
               {brandName}
             </div>

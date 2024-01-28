@@ -62,7 +62,7 @@ export function ProductTagButton({ top, left }: TagPositionProps) {
         </svg>
 
         <div ref={tooltipContentRef} className='tooltip' onMouseLeave={handleTooltipMouseLeave} onMouseEnter={handleTooltipMouseEnter}>
-          <article className='main_card--row' style={{ flexDirection: 'row' }}>
+          <article>
             <div className='img_wrap' style={{ '--max-width': '40%' } as React.CSSProperties}>
               <img src={main_01} alt='' className='main_product_img'/>
             </div>

@@ -2,7 +2,6 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-// import { Sofa } from '/public/models/Sofa';
 
 export function SofaMesh() {
 
@@ -29,7 +28,7 @@ export function SofaMesh() {
     }
   });
 
-  const gltf = useLoader(GLTFLoader, '/public/models/sofa.glb');
+  const gltf = useLoader(GLTFLoader, '/models/sofa.glb');
 
   return <>
     {/* eslint-disable-next-line react/no-unknown-property */}

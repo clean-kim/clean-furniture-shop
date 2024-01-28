@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+@import'../pages/main.scss';
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -25,6 +26,17 @@
   position: absolute;
   z-index: 3;
   visibility: hidden;
+
+  & > article {
+    @include main_card(row-reverse, 100%);
+    height: 100%;
+    gap: 5%;
+    flex-direction: row;
+
+    .img_wrap {
+      margin: 1rem;
+    }
+  }
 
   &::before {
     content: '';
