@@ -13,8 +13,7 @@ export interface MenuList {
 
 const getNavData = async (): Promise<Response<string>> => {
   const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/nav`);
-  const responseList = await response.json();
-  return responseList.data;
+  return await response.json();
 };
 
 export function Header() {
@@ -24,8 +23,6 @@ export function Header() {
     queryFn: getNavData,
     queryKey: ['nav'],
   });
-
-  console.log('nav:: ', menuList);
 
   const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();

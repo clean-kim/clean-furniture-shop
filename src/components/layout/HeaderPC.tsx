@@ -8,8 +8,6 @@ export const HeaderPC = forwardRef(({ menuList }: MenuList, ref: ForwardedRef<HT
   const location = useLocation();
   const [pathname, setPathname] = useState('');
 
-  console.log('HeaderPC:: ', menuList);
-
   useEffect(() => {
     const target = document.getElementById('menu') as Element;
     Splitting({ target: target });
