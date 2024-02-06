@@ -29,12 +29,13 @@
   border-radius: 0;
   margin-top: .5rem;
   padding: 2.5rem 0.9375rem 0;
-  top: 5rem;
-  left: 0;
+  top: 4rem;
+  right: 50%;
   background: var(--ui-background);
   color: var(--text-01);
   font-family: 'Noto Sans KR', sans-serif;
   display: flex;
+  transform: translate(50%);
 }
 
 .search_container {
