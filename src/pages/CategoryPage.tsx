@@ -12,7 +12,7 @@ export default function CategoryPage() {
   useEffect(() => {}, []);
 
   return (
-    <section className='shop'>
+    <section className='container'>
       <section>
         <h2 className={`section_title mt40${isMobile ? ' ml10' : ''}`}>{categoryCode?.toUpperCase()}</h2>
         <ProductList list={productList ?? []} />

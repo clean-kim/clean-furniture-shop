@@ -1,6 +1,6 @@
 .product_list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
   grid-row-gap: .5rem;
   margin-bottom: 10rem;
 }
@@ -8,12 +8,13 @@
 .product {
   max-width: 30rem;
   height: 50rem;
+}
 
-  .product_brand {
-    font-size: 1.2rem;
-  }
-  .product_name {
-
+@media only screen and (min-width: 516px) and (max-width: 767px) {
+  .product_list {
+    grid-template-columns: repeat(3, minmax(50%, 1fr));
+    grid-template-rows: auto;
+    grid-row-gap: 2rem;
   }
 }
 
@@ -21,6 +22,6 @@
   .product_list {
     grid-template-columns: repeat(2, minmax(50%, 1fr));
     grid-template-rows: auto;
-    grid-row-gap: 0;
+    grid-row-gap: 2rem;
   }
 }

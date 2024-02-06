@@ -53,10 +53,6 @@
 
       li {
         overflow: hidden;
-        padding: 1rem;
-        border-radius: 3em;
-        background-color: rgba(0, 0, 0, 0);
-        transition: background-color 0.2s;
         margin-bottom: 1rem;
 
         &:first-child {
@@ -65,12 +61,20 @@
 
 
         a {
+          width: 100%;
+          height: 100%;
           display: inline-block;
+          transition: background-color 0.2s;
+          border-radius: 3em;
+          background-color: rgba(0, 0, 0, 0);
+          padding: 1rem;
           animation: slideIn .3s ease-out;
         }
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.1);
+          a {
+            background-color: rgba(0, 0, 0, 0.1);
+          }
         }
       }
     }
@@ -142,15 +146,15 @@
 
   .m_title {
     font-weight: 700;
-    font-size: var(--fs-16);
+    font-size: var(--fs-18);
   }
   .m_sub_title {
     font-weight: 600;
-    font-size: var(--fs-14);
+    font-size: var(--fs-16);
   }
 
   .category {
-    font-size: var(--fs-14);
+    font-size: var(--fs-16);
     font-weight: 500;
 
     li {

@@ -11,3 +11,7 @@ export const handleScroll = (target: HTMLElement) => {
     target.classList.remove('header--blur');
   }
 };
+
+export const CalculateDiscountRate = (price: number, discountRate: number) => {
+  return price-(price*(discountRate/100));
+};

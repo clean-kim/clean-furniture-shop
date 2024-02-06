@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { black_chair } from '@assets/img/product_img';
 import styles from '@components/common/product.module.scss';
 
 type Props = {
   no: number;
   brandName: string;
+  category: string;
   discountRate: number;
   price: number;
   priceText: string;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function ProductItem(props: Props) {
-  const { no, brandName, priceText, title } = props;
+  const { no, brandName, priceText, title, category } = props;
 
   // const favorite = () => {
   //   Storage()?.setArray('favorite', no);
@@ -34,11 +34,15 @@ export function ProductItem(props: Props) {
         {/*  <Badge/>*/}
         {/*</div>*/}
         <Link to={`/detail/${no}`} className={styles.bg_link}>
-          <div className={styles.img_wrap}>
-            {/*<button className={styles.btn_favorite} onClick={favorite}>*/}
-            {/*  <Image src={getFavorite() ? icon_heart_fill : icon_heart} alt=''/>*/}
-            {/*</button>*/}
-            <img src={black_chair} alt={title} className={styles.product_img} />
+          {/*<div className={styles.img_wrap}>*/}
+          <div className={styles.thumbnail_wrap}>
+            {/*<img src={black_chair} alt={title} className={styles.product_img} />*/}
+            <div className={styles.thumbnail}>
+              {/*<button className={styles.btn_favorite} onClick={favorite}>*/}
+              {/*  <Image src={getFavorite() ? icon_heart_fill : icon_heart} alt=''/>*/}
+              {/*</button>*/}
+              {category}
+            </div>
           </div>
         </Link>
         <div className={styles.info_wrap}>

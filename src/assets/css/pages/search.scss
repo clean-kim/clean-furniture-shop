@@ -1,0 +1,224 @@
+.search {
+  font-family: 'Noto Sans KR', sans-serif;
+  padding-left: 2rem;
+}
+
+.result_title {
+  font-size: var(--fs-20);
+  font-weight: 300;
+  margin: 4rem 0;
+  q {
+    font-size: var(--fs-24);
+    font-weight: 500;
+  }
+}
+
+.result_subtitle {
+  font-size: var(--fs-14);
+}
+
+.search_modal {
+  visibility: hidden;
+  opacity: 0;
+
+  position: absolute;
+  width: 50rem;
+  min-width: 50rem;
+  height: 31rem;
+  border: 1px solid var(--ui-12);
+  border-radius: 0;
+  margin-top: .5rem;
+  padding: 2.5rem 0.9375rem 0;
+  top: 5rem;
+  left: 0;
+  background: var(--ui-background);
+  color: var(--text-01);
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+}
+
+.search_container {
+  width: 50%;
+  &:first-child {
+    padding-right: 0.9375rem;
+  }
+
+}
+
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list_title {
+  font-size: var(--fs-14);
+  font-weight: 600;
+}
+
+.keyword {
+  margin-bottom: 10px;
+  padding-left: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  word-break: break-word;
+
+  a {
+    display: flex;
+
+    em {
+      font-style: italic;
+      width: 20px;
+    }
+
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.keyword_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.rm_all_btn {
+  font-size: 12px;
+  font-weight: 300;
+  border: none;
+  outline: none;
+  color: var(--text-01);
+  cursor: pointer;
+  background-color: var(--ui-background);
+}
+
+.search_rm_btn {
+  width: 30px;
+  height: 14px;
+  background: url(https://img.icons8.com/pastel-glyph/2x/cancel.png) center center no-repeat;
+  background-size: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--ui-transparent);
+}
+
+.search_modal__form {
+  height: 50px;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  position: relative;
+
+  div {
+    position: relative;
+    margin-right: 4rem;
+  }
+
+  input {
+    width: 100%;
+    height: 4rem;
+    background: var(--ui-15);
+    border: var(--ui-transparent);
+    border-radius: 15px;
+    margin-right: 32px;
+    text-indent: 0.9375rem;
+    color: var(--text-01);
+  }
+  input::placeholder {
+    color: var(--ui-12);
+    font-weight: 600;
+  }
+
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    width: 4rem;
+    min-width: 4rem;
+    height: 4rem;
+    color: var(---text-01);
+    cursor: pointer;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .search {
+    padding-left: 0;
+  }
+
+  .search_container {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .list_title {
+    font-size: var(--fs-16);
+  }
+
+  .history_list {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.625rem;
+  }
+
+  .popular {
+    flex-direction: column;
+  }
+
+  .history_item {
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 15px;
+    background: var(--ui-15);
+    height: 30px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .keyword {
+    margin-bottom: 10px;
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    word-break: break-word;
+
+    a {
+      display: flex;
+
+      em {
+        font-style: italic;
+        width: 20px;
+      }
+    }
+  }
+
+  .search_rm_btn {
+    margin-left: 0.875rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    background-image: url(https://img.icons8.com/pastel-glyph/2x/cancel.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-size: 1.75rem;
+    background-color: var(--border100);
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .result_title, .result_subtitle {
+    margin-left: 1.25rem;
+  }
+}

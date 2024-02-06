@@ -1,6 +1,7 @@
-import { ForwardedRef, forwardRef, useReducer } from 'react';
+import { ForwardedRef, forwardRef, useReducer, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MenuList } from '@components/layout/Header';
+import { SearchModalMobile } from '@components/search/SearchModalMobile';
 
 export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRef<HTMLElement>) => {
   const location = useLocation();
@@ -13,6 +14,14 @@ export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRe
     } else {
       document.body.style.overflow = 'auto';
     }
+  };
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const onRequestClose = () => {
+    setModalOpen(false);
+  };
+  const handleClick = () => {
+    setModalOpen(true);
   };
 
   return (
@@ -44,7 +53,8 @@ export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRe
           </button>
           {/*</div>*/}
           <div className='flex--center'>
-            <button className='icon_search' aria-label='검색' />
+            <button className='icon_search' aria-label='검색' onClick={handleClick} />
+            {isModalOpen && <SearchModalMobile isModalOpen={isModalOpen} onRequestClose={onRequestClose}/>}
             <Link to={'/cart'} aria-label={'장바구니 가기'} className='cart_btn' />
           </div>
         </nav>

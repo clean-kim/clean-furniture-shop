@@ -1,6 +1,6 @@
 .cart_item {
   border-collapse: collapse;
-  border-bottom: 1px solid var(--border200);
+  border-bottom: 1px solid var(--ui-01);
 
   td:first-child {
     position: relative;
@@ -10,7 +10,7 @@
   }
 
   td {
-    padding: 20px;
+    padding: 2rem;
     vertical-align: middle;
     text-align: center;
   }
@@ -21,36 +21,36 @@
     .product_img {
       width: 12rem;
       height: 12rem;
-      border-radius: 7px;
+      border-radius: .7rem;
     }
 
     .item_summary {
       overflow: hidden;
-      margin-left: 12px;
-      padding-top: 3px;
+      margin-left: 1.2rem;
+      padding-top: .3rem;
       text-align: start;
 
       .brand_name {
         font-weight: 500;
-        margin-bottom: 13px;
+        margin-bottom: 1.3rem;
       }
 
       .product_title {
         width: 100%;
-        font-size: 0.9375rem;
+        font-size: var(--fs-12);
         display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        margin-bottom: 12px;
+        margin-bottom: 1.2rem;
       }
 
       .options {
-        font-size: 0.875rem;
+        font-size: 1.1rem;
 
         & div:first-child {
-          margin-bottom: 8px;
+          margin-bottom: .8rem;
         }
       }
 
@@ -62,11 +62,95 @@
     margin: 0 auto;
   }
 
-  .buttons {
-    width: fit-content;
-    margin: 0 auto;
-    button:first-child {
-      margin-bottom: 5px;
+}
+
+@media all and (max-width: 767px) {
+  .cart_item {
+    position: relative;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    border: 1px solid var(--border100);
+    border-radius: .5rem;
+    background: var(--ui-background);
+    box-sizing: content-box;
+    margin-bottom: 1rem;
+
+    .product_img {
+      width: 8.375rem;
+      height: 8.375rem;
+      min-width: 8.375rem;
+      max-width: 8.375rem;
+      border-radius: .5rem;
+      font-size: var(--fs-16);
+      background: var(--ui-01);
+      color: var(--text-02);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    figure {
+      display: flex;
+      figcaption {
+        overflow: hidden;
+        margin-left: 1.2rem;
+        padding-top: .3rem;
+      }
+    }
+
+  }
+  .info_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 7px;
+  }
+
+  .brand_name {
+    font-size: var(--fs-12);
+    font-weight: 500;
+  }
+
+  .product_title {
+    width: 100%;
+    font-size: var(--fs-14);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
+  }
+
+  .checkbox_btn_wrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  .price {
+    font-size: var(--fs-14);
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .info_layout {
+    margin-top: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .options {
+    font-size: var(--fs-14);
+
+    & div:first-child {
+      margin-bottom: .55rem;
+    }
+  }
+
+  .rm_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--text-01);
+    font-size: var(--fs-12);
+    background: var(--ui-transparent);
+    border-color: var(--ui-transparent);
   }
 }

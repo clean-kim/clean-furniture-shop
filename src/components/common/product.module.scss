@@ -3,6 +3,7 @@
   --gradient-01-b: #fbb03b;
 
   width: 100%;
+  max-width: 32rem;
   font-size: 1.4rem;
   text-align: start;
   color: #0e0e0c;
@@ -10,7 +11,7 @@
   position: relative;
   padding-top: 1rem;
   display: inline-block;
-  //margin-top: .5rem;
+  padding-right: 2rem;
 
   button {
     background: transparent;
@@ -18,6 +19,31 @@
 
   a:link, a:visited {
     color: #2d2d2d;
+  }
+
+  .thumbnail_wrap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 100%;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    font-size: var(--fs-24);
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: var(--ui-01);
+    color: var(--text-02);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .product_badge {
@@ -35,7 +61,6 @@
     z-index: 1;
     border: transparent;
     cursor: pointer;
-    z-index: 1;
 
     > img {
       width: 1.5em;
@@ -85,7 +110,7 @@
   .brand_name {
     font-weight: 600;
     margin-bottom: .7rem;
-    font-size: .6em;
+    font-size: .8em;
     word-break: break-all;
     color: #2d2d2d;
   }
@@ -133,12 +158,11 @@
   overflow: hidden;
 }
 
-@media only screen and (min-width:768px) {
+@media only screen and (max-width:767px) {
   .product {
-    min-width: 30rem;
-    max-width: 60rem;
-    font-size: 1.6rem;
-    padding: 20px 0 0 20px;
+    font-size: 1rem;
+    padding: 0;
+    //padding: .5rem 0 0 .5rem;
 
     .btn_favorite {
       > img {
@@ -146,19 +170,26 @@
         height: 2em;
       }
     }
+
+    .thumbnail {
+      width: min(50vw, 100%);
+      height: 100%;
+      border-radius: 0;
+    }
+
     .product_img {
       border-radius: .8em;
     }
     .brand_name {
-      font-size: .8em;
+      font-size: 1.1em;
       margin-bottom: .2em;
     }
     .product_title {
-      font-size: 1em;
+      font-size: 1.3em;
       margin-bottom: .6em;
     }
     .product_amount {
-      font-size: .9em;
+      font-size: 1.1em;
     }
     .product_cost {
       font-size: .8em;

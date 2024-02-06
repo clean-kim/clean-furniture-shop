@@ -3,12 +3,36 @@
   max-width: 128rem;
   margin: 8rem auto 0;
 
+  .cart_header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+
+    .checkbox_container {
+      font-size: var(--fs-14);
+      display: flex;
+      align-items: center;
+      label {
+        margin-left: .75rem;
+        line-height: normal;
+      }
+    }
+
+    button {
+      margin-left: 2rem;
+      font-size: var(--fs-14);
+      background: var(--ui-transparent);
+      border-color: var(--ui-transparent);
+    }
+  }
+
   &__table {
     width: 100%;
     border-collapse: collapse;
-    border-top: 2px solid var(--primary);
-    border-bottom: 2px solid var(--primary);
+    border-top: 1px solid var(--ui-01);
+    border-bottom: 1px solid var(--ui-01);
     box-sizing: border-box;
+    margin-bottom: 10rem;
 
     th, td {
       word-break: break-all;
@@ -16,12 +40,12 @@
     }
 
     thead {
-      height: 80px;
+      height: 8rem;
       font-weight: 500;
       font-size: 1.125rem;
-      line-height: 80px;
+      line-height: 8rem;
       box-sizing: border-box;
-      border-bottom: 1px solid var(--border400);
+      border-bottom: 1px solid var(--ui-09);
 
       th:first-child {
         position: relative;
@@ -35,7 +59,7 @@
     tbody {
       tr {
         border-collapse: collapse;
-        border-bottom: 1px solid var(--border200);
+        border-bottom: 1px solid var(--ui-01);
       }
 
       td:first-child {
@@ -46,7 +70,7 @@
       }
 
       td {
-        padding: 20px;
+        padding: 2rem;
         vertical-align: middle;
         text-align: center;
       }
@@ -57,6 +81,7 @@
 .empty_cart {
   width: 100%;
   height: 100%;
+  margin-top: var(--header-mobile);
   display: flex;
   flex-direction: column;
   gap: 7rem;
@@ -65,4 +90,25 @@
   font-size: var(--fs-16);
   font-weight: 500;
   color: var(--text-01);
+}
+
+@media all and (max-width: 767px) {
+  .cart {
+    width: 100%;
+    margin: 0;
+
+    .cart_list {
+      padding: 2rem;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cart_footer {
+      width: 100%;
+      height: 5.8rem;
+      max-height: 5.8rem;
+      margin-top: 8rem;
+      padding: 0 .5rem;
+    }
+  }
 }

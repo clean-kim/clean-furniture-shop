@@ -1,17 +1,16 @@
 import { blue_chair } from '@assets/img/product_img';
 import { Calculator } from '@components/cart/Calculator';
-import { Cart } from '@typings/Model';
+import { CartItemProps } from '@pages/CartPage';
 import { getComma } from '@utils';
 import styles from './cartItem.module.scss';
 
-export function CartItem(props: Cart) {
-  const { option, count, product } = props;
-  console.log('CartItem: ', product);
+export function CartItemPC(params: CartItemProps) {
+  const { option, count, product } = params.props;
 
   return (
     <tr className={styles.cart_item}>
       {/*<td><CheckboxRound /></td>*/}
-      <td><input type='checkbox' name='cartNo' /></td>
+      <td><input type='checkbox' name='cartNo' checked={params.checked} onChange={params.handleCheck}  /></td>
       <td>
         <figure className={styles.item_info}>
           <img src={blue_chair} alt="상품 이미지" className={styles.product_img} />

@@ -65,6 +65,11 @@
   --fs-50: 5rem;
   --fs-60: 6rem;
   --fs-70: 7rem;
+
+  --header-pc: 54px;
+  --header-mobile: 48.8px;
+  --footer: 50px;
+  --vh: 100%;
 }
 
 html {
@@ -105,4 +110,10 @@ button {
   min-height: 100vh;
   padding: 5.4rem 0 5rem 0;
   z-index: 1;
+}
+
+@media all and (max-width: 767px) {
+  html {
+    font-size: 8px;
+  }
 }

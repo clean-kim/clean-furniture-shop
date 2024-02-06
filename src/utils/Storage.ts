@@ -1,5 +1,5 @@
-export default function Storage() {
-  if (typeof window === 'undefined') {return;}
+export function Storage() {
+  // if (typeof window === 'undefined') {return;}
   const { localStorage } = window;
   const prefix = 'cl_';
   // const ArrDefaultMaxSize = 10;

@@ -183,3 +183,34 @@
   }
 }
 
+.add_cart {
+  width: 100%;
+  max-width: 12rem;
+  padding: 1rem .6rem;
+  color: var(--text-02);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  letter-spacing: .1rem;
+  background-color: var(--ui-01);
+  border-radius: 6em;
+  border-color: var(--ui-transparent);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.text_btn {
+  padding: 1rem;
+  text-decoration: underline;
+  border-color: var(--ui-transparent);
+  background-color: var(--ui-background);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: var(--fs-12);
+}
+
+.order_btn {
+  width: 100%;
+  height: 5.8rem;
+  max-height: 5.8rem;
+  background-color: var(--ui-01);
+  border-color: var(--ui-transparent);
+  color: var(--text-02);
+}

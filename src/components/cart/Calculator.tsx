@@ -1,16 +1,20 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import styles from './calculator.module.scss';
 
 type CalculatorProps = {
   initialCount: number;
 }
 
-export function Calculator({ initialCount }: CalculatorProps) {
-  const [calcNum, setCalcNum] = useState(1);
+export function Calculator({ initialCount = 1 }: CalculatorProps) {
+  const [calcNum, setCalcNum] = useState(initialCount);
 
   const calculator = (_: MouseEvent<HTMLButtonElement>, sign: number = 0) => {
-    console.log(sign);
-    if(sign > 0) {setCalcNum(prevState => prevState++);}
-    else if(sign < 1 && calcNum > 1) {setCalcNum(prevState => prevState--);}
+    if (sign > 0 && calcNum < 20){
+      setCalcNum(prevState => prevState + 1);
+    }
+    else if (sign < 1 && calcNum > 1) {
+      setCalcNum(prevState => prevState - 1);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,21 +28,20 @@ export function Calculator({ initialCount }: CalculatorProps) {
   };
 
   useEffect(() => {
-    setCalcNum(initialCount);
-  }, [initialCount]);
+  }, [calcNum]);
 
   return (
-    <div className='calculator'>
-      <button onClick={calculator}>-</button>
+    <div className={styles.calculator}>
+      <button onClick={e => calculator(e, -1)}>-</button>
       <input
         type="number"
         id="targetNumber"
         value={calcNum}
         onChange={handleChange}
-        className='calculator__input'
         readOnly={true}
-        min={0} />
-      <button onClick={calculator}>+</button>
+        min={0}
+        max={20}/>
+      <button onClick={e => calculator(e, 1)}>+</button>
     </div>
   );
 }

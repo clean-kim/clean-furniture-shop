@@ -15,3 +15,8 @@ export type Cart = {
   option: string;
   count: number;
 }
+
+export type SearchRank = {
+  rank: number;
+  value: string;
+}

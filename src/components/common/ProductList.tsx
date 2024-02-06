@@ -9,19 +9,14 @@ export interface ProductListProps {
 }
 
 export function ProductList({ list }: ProductListProps) {
-
   const { categoryCode } = useParams();
-  const [productList, setProductList] = useState<Product[]>([]);
-
-  useEffect(() => {
-    setProductList(list);
-  }, [categoryCode]);
+  useEffect(() => {}, [categoryCode, list]);
 
   return (
     <ul className="product_list">
       {
-        productList.length > 0 ?
-          productList.map((item) => {
+        list.length > 0 ?
+          list.map((item) => {
             return <li key={`product_${item.no}`}>
               <ProductItem
                 no={item.no}
@@ -29,6 +24,7 @@ export function ProductList({ list }: ProductListProps) {
                 brandName={item.brandName}
                 discountRate={item.discountRate}
                 price={item.price}
+                category={item.category}
                 priceText={getComma(item.price)}
               />
             </li>;

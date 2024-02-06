@@ -7,6 +7,7 @@ const MainPage = loadable(() => import('@pages/MainPage'));
 const CategoryPage = loadable(() => import('@pages/CategoryPage'));
 const ProductDetailPage = loadable(() => import('@pages/ProductDetailPage'));
 const CartPage = loadable(() => import('@pages/CartPage'));
+const SearchResultPage = loadable(() => import('@pages/SearchResultPage'));
 
 export const ROUTE_OBJECT = [
   {
@@ -26,7 +27,7 @@ export const ROUTE_OBJECT = [
       {
         element: <ProductDetailPage />,
         loader: async ({ params }) => {
-          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/detail/${params.no}`);
+          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/products?no=${params.no}`);
           return response.json();
         },
         path: 'detail/:no',
@@ -34,6 +35,16 @@ export const ROUTE_OBJECT = [
       {
         element: <CartPage />,
         path: 'cart',
+      },
+      {
+        element: <SearchResultPage />,
+        loader: async ({ request }) => {
+          const url = new URL(request.url);
+          const keyword = url.searchParams.get('keyword');
+          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/products?title_like=${keyword}`);
+          return response.json();
+        },
+        path: 'search',
       },
     ],
     element: <App />,

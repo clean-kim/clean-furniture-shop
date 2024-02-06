@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
+import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Splitting from 'splitting';
@@ -32,68 +33,72 @@ const MainPage = () => {
     });
   };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-      tl.from('.sub_text__container', {
+  const mainContainer = useRef<HTMLElement>(null);
+  useGSAP(() => {
+    gsap.timeline()
+      .from('.sub_text__container', {
         delay: 2,
         opacity: 0,
       })
-        .add('start')
-        .from('.main_text', {
-          duration: 1,
-          ease: 'power3.inOut',
-          yPercent: -100,
-        }, 'start');
-      // .from('.main_card--column', {
-      //   duration: 1,
-      //   ease: 'power3.inOut',
-      //   yPercent: 200,
-      // }, 'start');
-      gsap.from('.main_card01', {
+      .add('start')
+      .from('.main_text', {
         duration: 1,
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          end: 'top top',
-          start: 'top bottom',
-          trigger: '.grid_item01',
-        },
-        yPercent: 300,
-      });
-      gsap.from('.main_card02', {
-        duration: 1,
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          end: 'top top',
-          start: 'top bottom',
-          trigger: '.grid_item02',
-        },
-        yPercent: 300,
-      });
-      if(splitTextRef1.current) {
-        setSplitTextEffect(splitTextRef1.current);
-      }
-      if(splitTextRef2.current) {
-        setSplitTextEffect(splitTextRef2.current);
-      }
-      if(descTextRef.current) {
-        gsap.from(descTextRef.current, {
-          duration: 1,
-          ease: 'power2.inOut',
-          scrollTrigger: {
-            end: 'top top',
-            start: 'top bottom',
-            trigger: descTextRef.current,
-          },
-          xPercent: -100,
-        });
-      }
+        ease: 'power3.inOut',
+        yPercent: -100,
+      }, 'start');
+    gsap.from('.main_card01', {
+      duration: 1,
+      ease: 'power2.inOut',
+      scrollTrigger: {
+        end: 'top top',
+        start: 'top bottom',
+        trigger: '.grid_item01',
+      },
+      yPercent: 300,
     });
-    return () => ctx.revert();
-  }, []);
+    gsap.from('.main_card02', {
+      duration: 1,
+      ease: 'power2.inOut',
+      scrollTrigger: {
+        end: 'top top',
+        start: 'top bottom',
+        trigger: '.grid_item02',
+      },
+      yPercent: 300,
+    });
+    gsap.from(['.main_product_link', '.main_card--row'], {
+      duration: 1,
+      ease: 'power2.inOut',
+      scrollTrigger: {
+        end: 'top top',
+        start: 'top bottom',
+        trigger: '.main_product_link',
+      },
+      xPercent: 100,
+    });
+
+    if(splitTextRef1.current) {
+      setSplitTextEffect(splitTextRef1.current);
+    }
+    if(splitTextRef2.current) {
+      setSplitTextEffect(splitTextRef2.current);
+    }
+    if(descTextRef.current) {
+      gsap.from(descTextRef.current, {
+        duration: 1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          end: 'top top',
+          start: 'top bottom',
+          trigger: descTextRef.current,
+        },
+        xPercent: -100,
+      });
+    }
+  }, { revertOnUpdate: true, scope: mainContainer });
 
   return (
-    <main className='main'>
+    <main className='main' ref={mainContainer}>
       <section className='section_wrap canvas_wrap'>
         {/*<img src={main_bg} alt='main_01' width={2560} height={0} className='main__bg' style={{ height: '100vh' }}/>*/}
         <section className='main__section'>
