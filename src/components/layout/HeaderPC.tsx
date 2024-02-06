@@ -8,6 +8,8 @@ export const HeaderPC = forwardRef(({ menuList }: MenuList, ref: ForwardedRef<HT
   const location = useLocation();
   const [pathname, setPathname] = useState('');
 
+  console.log('HeaderPC:: ', menuList);
+
   useEffect(() => {
     const target = document.getElementById('menu') as Element;
     Splitting({ target: target });
@@ -48,8 +50,7 @@ export const HeaderPC = forwardRef(({ menuList }: MenuList, ref: ForwardedRef<HT
       <div className='category' ref={categoryRef} onMouseEnter={handleCategoryMouseEnter} onMouseLeave={handleCategoryMouseLeave}>
         <ul>
           {
-            isCategoryHovered && menuList &&
-            menuList.sort().map(item => {
+            isCategoryHovered && menuList.sort().map(item => {
               return (<li key={item}><Link to={`/category/${item.toLowerCase()}`}>{item}</Link></li>);
             })
           }

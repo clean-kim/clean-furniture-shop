@@ -11,19 +11,21 @@ export interface MenuList {
   menuList: string[];
 }
 
+const getNavData = async (): Promise<Response<string>> => {
+  const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/nav`);
+  const responseList = await response.json();
+  return responseList.data;
+};
+
 export function Header() {
+
   const isMobile = useIsMobile();
-
-  const getNavData = async (): Promise<Response<string>> => {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/nav`);
-    const responseList = await response.json();
-    return responseList.data;
-  };
-
   const { data: menuList, isSuccess } = useQuery<Response<string>>({
     queryFn: getNavData,
     queryKey: ['nav'],
   });
+
+  console.log('nav:: ', menuList);
 
   const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
