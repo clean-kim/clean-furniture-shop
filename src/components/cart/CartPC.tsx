@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { CartItemPC } from '@components/cart/CartItemPC';
-import { useCheckbox } from '@components/cart/useCheckbox';
 import { CartListProps } from '@pages/CartPage';
 import { Cart } from '@typings/Model';
+import { useCheckbox } from '@hooks';
 
 export function CartPC({ list }: CartListProps) {
   const { allChecked, handleAllCheckClick, checks, handleCheckClick } = useCheckbox(list);

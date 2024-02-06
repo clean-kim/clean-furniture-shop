@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CartItemMobile } from '@components/cart/CartItemMobile';
-import { useCheckbox } from '@components/cart/useCheckbox';
+import { useCheckbox } from '@hooks';
 import { CartListProps } from '@pages/CartPage';
 import { Cart } from '@typings/Model';
 
 export function CartMobile({ list }: CartListProps) {
 
   const { allChecked, handleAllCheckClick, checks, handleCheckClick } = useCheckbox(list);
+
   useEffect(() => {}, [checks, allChecked]);
 
   return (
