@@ -21,7 +21,16 @@
     .product_img {
       width: 12rem;
       height: 12rem;
-      border-radius: .7rem;
+      font-size: var(--fs-16);
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 1rem;
+      background: var(--ui-01);
+      color: var(--text-02);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .item_summary {

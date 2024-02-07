@@ -55,7 +55,9 @@ export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRe
           <div className='flex--center'>
             <button className='icon_search' aria-label='검색' onClick={handleClick} />
             {isModalOpen && <SearchModalMobile isModalOpen={isModalOpen} onRequestClose={onRequestClose}/>}
-            <Link to={'/cart'} aria-label={'장바구니 가기'} className='cart_btn' />
+            <span className='cart_container'>
+              <Link to={'/cart'} aria-label={'장바구니 가기'} className='cart_btn' />
+            </span>
           </div>
         </nav>
       </header>

@@ -7,12 +7,12 @@ import styles from './cartItem.module.scss';
 
 export function CartItemMobile(params: CartItemProps) {
   const { option, count, product } = params.props;
-  const cartDispatch = useContext(CartDispatchContext);
 
   const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
     onRemoveButtonHandler(Number.parseInt(e.currentTarget.value));
   };
 
+  const cartDispatch = useContext(CartDispatchContext);
   const onRemoveButtonHandler = (no: number) => {
     cartDispatch(removeCart(no));
   };

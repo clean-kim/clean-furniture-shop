@@ -1,6 +1,6 @@
-import { MouseEvent, useContext } from 'react';
+import { MouseEvent, useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { black_chair } from '@assets/img/product_img';
+import { Modal } from '@components/common/Modal';
 import { Cart, Product } from '@typings/Model';
 import { CalculateDiscountRate, getComma } from '@utils';
 import { addCart, CartDispatchContext } from '../contexts/CartContext';
@@ -16,6 +16,7 @@ export default function ProductDetailPage() {
   };
   const handleClick = () => {
     cartDispatch(addCart({ cartItem: cartData }));
+    setModalOpen(true);
   };
 
   const handleAccordionClick = (e: MouseEvent<HTMLLIElement>) => {
@@ -34,11 +35,20 @@ export default function ProductDetailPage() {
     }
   };
 
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleRequestClose = () => {
+    setModalOpen(false);
+  };
+
   return (
     <section className='detail'>
       <div className='product_container'>
-        <div className='product_img'>
-          <img src={black_chair} alt={product.title} className={''} />
+        <div>
+          <div className='product_thumbnail_wrap'>
+            <div className='product_thumbnail'>
+              {product.category}
+            </div>
+          </div>
         </div>
         <div className='info_container'>
           <div className='product_info'>
@@ -52,6 +62,7 @@ export default function ProductDetailPage() {
             </div>
             <div className='product_btn_wrap'>
               <button onClick={handleClick} className='add_cart'>장바구니 담기</button>
+              { isModalOpen && <Modal isModalOpen={isModalOpen} onRequestClose={handleRequestClose} /> }
             </div>
           </div>
           <div>

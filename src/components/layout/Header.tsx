@@ -17,7 +17,6 @@ const getNavData = async (): Promise<Response<string>> => {
 };
 
 export function Header() {
-
   const isMobile = useIsMobile();
   const { data: menuList, isSuccess } = useQuery<Response<string>>({
     queryFn: getNavData,
@@ -26,14 +25,16 @@ export function Header() {
 
   const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
+
+  const scrollEvent = () => handleScroll(headerRef.current as HTMLElement);
   useEffect(() => {
     if (headerRef.current) {
       if (location.pathname.split('/')[1] !== '') {
-        headerRef.current.removeAttribute('style');
+        window.removeEventListener('scroll', scrollEvent);
       } else {
-        window.addEventListener('scroll', () => handleScroll(headerRef.current as HTMLElement));
+        window.addEventListener('scroll', scrollEvent);
         return () => {
-          window.removeEventListener('scroll', () => handleScroll(headerRef.current as HTMLElement));
+          window.removeEventListener('scroll', scrollEvent);
         };
       }
     }
