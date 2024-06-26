@@ -5,7 +5,7 @@ import { CartListProps } from '@pages/CartPage';
 import { Cart } from '@typings/Model';
 
 export function CartPC({ list }: CartListProps) {
-  const { allChecked, handleAllCheckClick, checks, handleCheckClick } = useCheckbox(list);
+  const { allChecked, handleAllCheckClick, checkList, handleCheckClick } = useCheckbox(list);
 
   return (
     <>
@@ -39,7 +39,7 @@ export function CartPC({ list }: CartListProps) {
                   })}*/}
                 {
                   list.map((item: Cart, index) => {
-                    return <CartItemPC key={item.product.no} props={item} checked={checks[index]} handleCheck={() => handleCheckClick(index)} />;
+                    return <CartItemPC key={item.product.no} props={item} checked={checkList[index]} handleCheck={() => handleCheckClick(index)} />;
                   })
                 }
               </tbody>

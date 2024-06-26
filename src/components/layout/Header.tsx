@@ -27,6 +27,7 @@ export function Header() {
   const location = useLocation();
 
   const scrollEvent = () => handleScroll(headerRef.current as HTMLElement);
+
   useEffect(() => {
     if (headerRef.current) {
       if (location.pathname.split('/')[1] !== '') {

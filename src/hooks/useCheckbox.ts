@@ -1,25 +1,25 @@
 import { useState } from 'react';
 
 export const useCheckbox = <T>(list: T[]) => {
-  const [checks, setChecks] = useState(Array.from(list, () => false));
+  const [checkList, setCheckList] = useState(Array.from(list, () => { return false; }));
   const [allChecked, setAllChecked] = useState(false);
 
   const handleAllCheckClick = () => {
     const newValue = !allChecked;
     setAllChecked(newValue);
-    setChecks(checks.map(() => newValue));
+    setCheckList(checkList.map(() => { return newValue; }));
   };
 
   const handleCheckClick = (index: number) => {
-    const newChecks = [...checks];
-    newChecks[index] = !newChecks[index];
-    setChecks(newChecks);
-    setAllChecked(newChecks.every(check => check));
+    const newCheckList = [...checkList];
+    newCheckList[index] = !newCheckList[index];
+    setCheckList(newCheckList);
+    setAllChecked(newCheckList.every(check => { return check; }));
   };
 
   return {
     allChecked,
-    checks,
+    checkList,
     handleAllCheckClick,
     handleCheckClick,
   };

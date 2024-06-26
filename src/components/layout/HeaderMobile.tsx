@@ -17,7 +17,7 @@ export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRe
   };
 
   const [isModalOpen, setModalOpen] = useState(false);
-  const onRequestClose = () => {
+  const handleRequestClose = () => {
     setModalOpen(false);
   };
   const handleClick = () => {
@@ -54,7 +54,7 @@ export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRe
           {/*</div>*/}
           <div className='flex--center'>
             <button className='icon_search' aria-label='검색' onClick={handleClick} />
-            {isModalOpen && <SearchModalMobile isModalOpen={isModalOpen} onRequestClose={onRequestClose}/>}
+            {isModalOpen && <SearchModalMobile isModalOpen={isModalOpen} onRequestClose={handleRequestClose}/>}
             <span className='cart_container'>
               <Link to={'/cart'} aria-label={'장바구니 가기'} className='cart_btn' />
             </span>

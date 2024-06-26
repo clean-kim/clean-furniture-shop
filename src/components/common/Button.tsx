@@ -2,7 +2,7 @@ import styles from '@components/common/button.module.scss';
 
 type ButtonProps = {
   children: React.ReactNode;
-  style: string;
+  style: 'btn_primary';
   onClick: () => void;
 }
 

@@ -8,8 +8,7 @@ export function Modal(props: { isModalOpen: boolean; onRequestClose(): void; }) 
       onRequestClose={props.onRequestClose}
       contentLabel={' Modal'}
       ariaHideApp={false}
-      style={ModalStyle}
-    >
+      style={ModalStyle}>
       <p className='mt20 mb40'>장바구니에 추가되었습니다.</p>
       <Link to='/cart' className='add_cart'>장바구니 가기</Link>
     </ReactModal>

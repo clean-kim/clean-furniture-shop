@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className='footer'>
       <span>
-        &copy;2023
+        &copy;2024
       </span>
       <div>
         <span className='privacy'>

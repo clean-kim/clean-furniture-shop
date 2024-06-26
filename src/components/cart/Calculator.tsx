@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import styles from './calculator.module.scss';
 
 type CalculatorProps = {
@@ -26,9 +26,6 @@ export function Calculator({ initialCount = 1 }: CalculatorProps) {
       setCalcNum(intValue);
     }
   };
-
-  useEffect(() => {
-  }, [calcNum]);
 
   return (
     <div className={styles.calculator}>

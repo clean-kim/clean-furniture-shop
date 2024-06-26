@@ -6,7 +6,6 @@ import styles from './cartItem.module.scss';
 
 export function CartItem(props: Cart) {
   const { option, count, product } = props;
-  console.log('CartItem: ', product);
 
   return (
     <tr className={styles.cart_item}>

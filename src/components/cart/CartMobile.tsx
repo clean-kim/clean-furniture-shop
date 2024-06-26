@@ -7,9 +7,9 @@ import { Cart } from '@typings/Model';
 
 export function CartMobile({ list }: CartListProps) {
 
-  const { allChecked, handleAllCheckClick, checks, handleCheckClick } = useCheckbox(list);
+  const { allChecked, handleAllCheckClick, checkList, handleCheckClick } = useCheckbox(list);
 
-  useEffect(() => {}, [checks, allChecked]);
+  useEffect(() => {}, [checkList, allChecked]);
 
   return (
     <>
@@ -26,7 +26,7 @@ export function CartMobile({ list }: CartListProps) {
             </div>
             <ul className='cart_list'>
               {list.map((item: Cart, index) => {
-                return <CartItemMobile key={item.product.no} props={item} checked={checks[index]} handleCheck={() => handleCheckClick(index)} />;
+                return <CartItemMobile key={item.product.no} props={item} checked={checkList[index]} handleCheck={() => handleCheckClick(index)} />;
               })}
             </ul>
             <div className='cart_footer'>

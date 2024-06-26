@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from '@components/common/product.module.scss';
 
-type Props = {
+type ProductItemProps = {
   no: number;
   brandName: string;
   category: string;
@@ -11,7 +11,7 @@ type Props = {
   title: string;
 };
 
-export function ProductItem(props: Props) {
+export function ProductItem(props: ProductItemProps) {
   const { no, brandName, priceText, title, category } = props;
 
   // const favorite = () => {

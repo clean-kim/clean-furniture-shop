@@ -59,7 +59,7 @@ export const SearchModalMobile = ({ isModalOpen, onRequestClose }: SearchModalMo
 
   const navigate = useNavigate();
   // const dispatch = useAppDispatch();
-  const onSearchButtonClick = () => {
+  const handleSearchButtonClick = () => {
     if (searchValue) {
       Storage().setArray('search', searchValue);
     }
@@ -68,11 +68,10 @@ export const SearchModalMobile = ({ isModalOpen, onRequestClose }: SearchModalMo
     onRequestClose();
   };
 
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      console.log('');
-      onSearchButtonClick();
+      handleSearchButtonClick();
     }
   };
 
@@ -87,7 +86,7 @@ export const SearchModalMobile = ({ isModalOpen, onRequestClose }: SearchModalMo
       <div className='search_container'>
         <form className='search_modal__form'>
           <div>
-            <input type='text' placeholder={'Search'} value={searchValue} onKeyPress={handleKeyPress} onChange={handleInputChange} />
+            <input type='text' placeholder={'Search'} value={searchValue} onKeyDown={handleKeyDown} onChange={handleInputChange} />
           </div>
           <button className="rm_all_btn" onClick={onRequestClose}>취소</button>
         </form>

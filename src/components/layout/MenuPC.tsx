@@ -12,6 +12,10 @@ export function MenuPC() {
 
   const headerRef = useRef<HTMLHeadElement>(null);
 
+  const handleLoginClick = () => {
+    console.log('Login Click');
+  };
+
   let prevScrollPos = window.scrollY;
   window.onscroll = function() {
     const curScrollPos = window.scrollY;
@@ -27,7 +31,6 @@ export function MenuPC() {
 
   useEffect(() => {
     getNavData();
-
   }, []);
 
   return (
@@ -48,7 +51,7 @@ export function MenuPC() {
         </nav>
       </div>
       <div className='global_items'>
-        <div><Button style={'btn_primary'} onClick={() => {}}>로그인</Button></div>
+        <div><Button style={'btn_primary'} onClick={handleLoginClick}>로그인</Button></div>
         <div>
           <SearchInput />
         </div>
