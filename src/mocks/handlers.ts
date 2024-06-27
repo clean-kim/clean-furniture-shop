@@ -12,10 +12,10 @@ export const handlers = [
     const productNo = url.searchParams.get('no');
     let result = dummy.data.products;
     if (category) {
-      result = dummy.data.products.filter(p => p.category === category);
+      result = dummy.data.products.filter(p => {return p.category === category;});
     }
     if (productNo) {
-      result = dummy.data.products.filter(p => p.category === category);
+      result = dummy.data.products.filter(p => {return p.category === category;});
     }
     return HttpResponse.json(result);
   }),
@@ -34,7 +34,7 @@ export const handlers = [
       title: '',
     } as unknown as Product;
     if (no) {
-      result = dummy.data.products.find(p => p.no === Number(no)) as unknown as Product;
+      result = dummy.data.products.find(p => {return p.no === Number(no);}) as unknown as Product;
       console.log('result:: ', result);
     }
     return HttpResponse.json(result);

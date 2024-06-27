@@ -40,7 +40,7 @@ export function Storage() {
 
   const removeArray = (key: string, value: string) => {
     const arr = JSON.parse(localStorage.getItem(`${prefix+key}`) ?? '[]');
-    set(key, JSON.stringify(arr.filter((item: any) => item !== value)));
+    set(key, JSON.stringify(arr.filter((item: any) => {return item !== value;})));
   };
 
   return {

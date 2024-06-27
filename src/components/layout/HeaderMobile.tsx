@@ -5,7 +5,7 @@ import { SearchModalMobile } from '@components/search/SearchModalMobile';
 
 export const HeaderMobile = forwardRef(({ menuList }: MenuList, ref: ForwardedRef<HTMLElement>) => {
   const location = useLocation();
-  const [open, toggleOpen] = useReducer((v) => !v, true);
+  const [open, toggleOpen] = useReducer((v) => {return !v;}, true);
 
   const handleToggle = () => {
     toggleOpen();

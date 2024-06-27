@@ -26,7 +26,7 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
 
-  const scrollEvent = () => handleScroll(headerRef.current as HTMLElement);
+  const scrollEvent = () => {return handleScroll(headerRef.current as HTMLElement);};
 
   useEffect(() => {
     if (headerRef.current) {

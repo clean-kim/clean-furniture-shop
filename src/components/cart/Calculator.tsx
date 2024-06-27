@@ -10,10 +10,10 @@ export function Calculator({ initialCount = 1 }: CalculatorProps) {
 
   const calculator = (_: MouseEvent<HTMLButtonElement>, sign: number = 0) => {
     if (sign > 0 && calcNum < 20){
-      setCalcNum(prevState => prevState + 1);
+      setCalcNum(prevState => {return prevState + 1;});
     }
     else if (sign < 1 && calcNum > 1) {
-      setCalcNum(prevState => prevState - 1);
+      setCalcNum(prevState => {return prevState - 1;});
     }
   };
 
@@ -29,7 +29,7 @@ export function Calculator({ initialCount = 1 }: CalculatorProps) {
 
   return (
     <div className={styles.calculator}>
-      <button onClick={e => calculator(e, -1)}>-</button>
+      <button onClick={e => {return calculator(e, -1);}}>-</button>
       <input
         type="number"
         id="targetNumber"
@@ -38,7 +38,7 @@ export function Calculator({ initialCount = 1 }: CalculatorProps) {
         readOnly={true}
         min={0}
         max={20}/>
-      <button onClick={e => calculator(e, 1)}>+</button>
+      <button onClick={e => {return calculator(e, 1);}}>+</button>
     </div>
   );
 }

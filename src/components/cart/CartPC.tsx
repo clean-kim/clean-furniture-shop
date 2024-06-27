@@ -39,7 +39,7 @@ export function CartPC({ list }: CartListProps) {
                   })}*/}
                 {
                   list.map((item: Cart, index) => {
-                    return <CartItemPC key={item.product.no} props={item} checked={checkList[index]} handleCheck={() => handleCheckClick(index)} />;
+                    return <CartItemPC key={item.product.no} props={item} checked={checkList[index]} handleCheck={() => { return handleCheckClick(index); }} />;
                   })
                 }
               </tbody>

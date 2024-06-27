@@ -3,11 +3,11 @@ import loadable from '@loadable/component';
 import App from '../App';
 import type { RouteObject } from 'react-router-dom';
 
-const MainPage = loadable(() => import('@pages/MainPage'));
-const CategoryPage = loadable(() => import('@pages/CategoryPage'));
-const ProductDetailPage = loadable(() => import('@pages/ProductDetailPage'));
-const CartPage = loadable(() => import('@pages/CartPage'));
-const SearchResultPage = loadable(() => import('@pages/SearchResultPage'));
+const MainPage = loadable(() => {return import('@pages/MainPage');});
+const CategoryPage = loadable(() => {return import('@pages/CategoryPage');});
+const ProductDetailPage = loadable(() => {return import('@pages/ProductDetailPage');});
+const CartPage = loadable(() => {return import('@pages/CartPage');});
+const SearchResultPage = loadable(() => {return import('@pages/SearchResultPage');});
 
 export const ROUTE_OBJECT = [
   {

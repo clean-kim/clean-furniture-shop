@@ -23,19 +23,19 @@ export type CartRemoveAction = {
 
 export type CartAction = CartAddAction | CartRemoveAction;
 
-export const addCart = (props: { cartItem: Cart }): CartAddAction => ({
+export const addCart = (props: { cartItem: Cart }): CartAddAction => {return {
   payload: props,
   type: ActionType.add,
-});
+};};
 
-export const removeCart = (cartItemNo: number): CartRemoveAction => ({
+export const removeCart = (cartItemNo: number): CartRemoveAction => {return {
   payload: cartItemNo,
   type: ActionType.remove,
-});
+};};
 
 export const CartContext = createContext<CartContextState>([]);
 
-export const CartDispatchContext = createContext<CartDispatchContextState>(() => null);
+export const CartDispatchContext = createContext<CartDispatchContextState>(() => { return null; });
 
 export const reducer = (state: Cart[], action: CartAction) => {
   const type = action.type;
@@ -47,12 +47,12 @@ export const reducer = (state: Cart[], action: CartAction) => {
     const newArr: Cart[] = [];
     if (state.length > 0) {
       // 중복 아닌 리스트
-      const normalList = state.filter((item: Cart) => !(cartItem) || item.product.no !== cartItem.product.no);
+      const normalList = state.filter((item: Cart) => {return !(cartItem) || item.product.no !== cartItem.product.no;});
       normalList.forEach((item: Cart) => {
         newArr.push(item);
       });
       // 중복 리스트
-      const duplicateItem = state.filter((item: Cart) => !(cartItem) || item.product.no === cartItem.product.no && option !== undefined && item.option?.includes(option));
+      const duplicateItem = state.filter((item: Cart) => {return !(cartItem) || item.product.no === cartItem.product.no && option !== undefined && item.option?.includes(option);});
       if (duplicateItem.length > 0) {
         duplicateItem.forEach((item: Cart) => {
           if (item.count) {   // 중복이면 카운트만 증가
@@ -70,7 +70,7 @@ export const reducer = (state: Cart[], action: CartAction) => {
   }
   case ActionType.remove: {
     const cartItemNo = action.payload;
-    return state.filter((item: Cart) => item.product.no !== cartItemNo);
+    return state.filter((item: Cart) => {return item.product.no !== cartItemNo;});
   }
   default : {
     return [];

@@ -26,7 +26,7 @@ export function CartMobile({ list }: CartListProps) {
             </div>
             <ul className='cart_list'>
               {list.map((item: Cart, index) => {
-                return <CartItemMobile key={item.product.no} props={item} checked={checkList[index]} handleCheck={() => handleCheckClick(index)} />;
+                return <CartItemMobile key={item.product.no} props={item} checked={checkList[index]} handleCheck={() => { return handleCheckClick(index); }} />;
               })}
             </ul>
             <div className='cart_footer'>
